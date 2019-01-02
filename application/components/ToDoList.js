@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 class ToDoList extends React.Component {
-    constructor(){
+    constructor() {
         super();
     }
     componentWillMount() {
@@ -21,11 +21,11 @@ class ToDoList extends React.Component {
             <ListView
                 dataSource={dataSource}
                 renderRow={(rowData, sectionID, rowID) =>
-          <ToDoListItem item={rowData}
-          onPress={() => this.props.onPressItem(rowData, rowID)}
-          onLongPress={() => this.props.onLongPressItem(rowData, rowID)} />
-        }
-                style={styles.listView}/>
+                    <ToDoListItem item={rowData}
+                        onPress={() => this.props.onPressItem(rowData, rowID)}
+                        onLongPress={() => this.props.onLongPressItem(rowData, rowID)} />
+                }
+                style={styles.listView} />
         );
     }
 

@@ -6,6 +6,10 @@ var styles = StyleSheet.create({
 
     navigator: {flex: 1},
 
+    noDataText: {
+        fontSize: 22
+    },
+
     container: {
         flex: 1,
         flexDirection: 'column',
@@ -19,6 +23,12 @@ var styles = StyleSheet.create({
         fontSize: 18,
         color: 'white',
         alignSelf: 'center'
+    },
+
+    mainView: {
+        flex: 1, 
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
     button: {
@@ -40,7 +50,7 @@ var styles = StyleSheet.create({
     },
 
     todo: {
-        marginTop: 100,
+        // marginTop: 100,
         flex: 1,
         padding: 10,
         backgroundColor: '#ffffff',

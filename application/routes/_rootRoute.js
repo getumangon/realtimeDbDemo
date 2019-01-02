@@ -4,7 +4,10 @@ import ToDoEdit from "../components/ToDoEdit";
 
 const _rootRoute = createStackNavigator({
     ToDoContainer: {
-      screen: ToDoContainer
+      screen: ToDoContainer,
+      navigationOptions: {
+        title: 'To Do application'
+      }
     },
     ToDoEdit: {
         screen: ToDoEdit

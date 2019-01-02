@@ -6,7 +6,7 @@
  */
 
 #import "AppDelegate.h"
-#import <Firebrase.h>
+
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
@@ -14,7 +14,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [FIRApp configure];
+  
   NSURL *jsCodeLocation;
 
   #ifdef DEBUG

@@ -5,10 +5,8 @@ import React from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 var Form = t.form.Form;
 var uuid = require('uuid');
-const tempId = uuid.v1();
-const tempDate = new Date();
 
-var ToDo = t.struct({txt: t.Str, complete: t.Bool, id: t.maybe(t.String), createdAt: t.maybe(t.Date)});
+var ToDo = t.struct({txt: t.Str, complete: t.Bool, id: t.maybe(t.String), createdAt: t.maybe(t.Str)});
 
 var options = {
     fields: {
@@ -18,11 +16,12 @@ var options = {
             autoFocus: true
         },
         id: {
-            hidden: true
+            hidden: false,
+            editable: false
         },
         createdAt: {
-            hidden: true
-            // defaultValueText: tempDate
+            hidden: false,
+            editable: false
         }
     }
 };
@@ -33,20 +32,30 @@ class ToDoEdit extends React.Component {
         this.onUpdate = this.onUpdate.bind(this);
         this.state = {
             rowValues: {
-                id: tempId, 
-                createdAt: tempDate
+                txt: '',
+                id: uuid.v1(), 
+                createdAt: new Date().valueOf().toString()
             }
         }
+    }
+
+    componentDidMount(){
+        let { item } = this.props.navigation.state.params;
+        console.log('====================================');
+        console.log("VaLUE: " ,item);
+        console.log('====================================');
+        this.setState({
+            rowValues: {
+                txt: (item.txt) ? item.txt : '',
+                id: (item.id) ? item.id : uuid.v1(), 
+                createdAt: (item.createdAt) ? item.createdAt : new Date().valueOf().toString()
+            }
+        })
     }
 
     onUpdate() {
         var value = this.refs.form.getValue();
         const { navigation } = this.props;
-        // let tempObj = value
-        // tempObj['index'] = Math.random()
-        // console.log('====================================');
-        // console.log("VLUE: " ,navigation.state);
-        // console.log('====================================');
         if (value) {
             navigation.state.params.update(value, navigation.state.params.id, this);
         }
